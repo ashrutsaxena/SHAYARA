@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
-    Button resendCode;
+    Button resendCode, security;
     Button resetPassLocal, changeProfileImage;
     FirebaseUser user;
     ImageView profileImage;
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         fullName = findViewById(R.id.profileName);
         email = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
+        security = findViewById(R.id.SECURITY);
 
         profileImage = findViewById(R.id.profileImage);
         changeProfileImage = findViewById(R.id.changeProfile);
@@ -112,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
+            }
+        });
+        security.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SECURITY.class));
             }
         });
 
