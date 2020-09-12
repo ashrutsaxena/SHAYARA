@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1045528371733",
+    "firebase_url": "https://shayar-e3d1a.firebaseio.com",
+    "project_id": "shayar-e3d1a",
+    "storage_bucket": "shayar-e3d1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045528371733:android:5b839c47a6b2d2860ae41c",
+        "android_client_info": {
+          "package_name": "ashrut.saxena.destrution.shayar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045528371733-nvt59gm8drptf3b8bsjhq0n543ssbl57.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ashrut.saxena.destrution.shayar",
+            "certificate_hash": "72fcf9ef3412a510f570138f6111d697c79c9fee"
+          }
+        },
+        {
+          "client_id": "1045528371733-2g8n5dp0akdd0r3ntcdo11ubptivkvnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYKWh6ZEpicg62bXdTanFzBAAExVeTQ7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045528371733-2g8n5dp0akdd0r3ntcdo11ubptivkvnr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

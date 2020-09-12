@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cowritecar"
+    tools:context=".SPLASH">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_above="@id/txtappname"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/download" />
+
+    <TextView
+        android:id="@+id/txtappname"
+        style="@style/AlertDialog.AppCompat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/txtwrite"
+        android:layout_centerVertical="true"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="@string/shayrana"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/txtwrite"
+        style="@style/AlertDialog.AppCompat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="@string/success_comes_from_taking_calculated_risks"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        tools:ignore="InvalidId" />
+
+
+</RelativeLayout>

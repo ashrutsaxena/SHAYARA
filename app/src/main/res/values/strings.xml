@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">SHAYAR</string>
+    <string name="login">Login</string>
+    <string name="new_here_create_account">New Here ? Create Account</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="already_registered_login_here">Already Registered ? Login Here</string>
+    <string name="register">Register</string>
+
+    <string name="password">Password</string>
+
+
+    <string name="authenticator_app">Authenticator App</string>
+    <string name="logout">Logout</string>
+
+    <string name="phone_number">Phone Number</string>
+    <string name="email_not_verfied">Email Not Verfied !</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="change_profile">Change Profile</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email_address">Your Email Address</string>
+    <string name="phone">Phone</string>
+    <string name="save">Save</string>
+    <string name="shayrana">SHAYRANA</string>
+    <string name="success_comes_from_taking_calculated_risks">SUCCESS COMES FROM TAKING CALCULATED RISKS</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="SECURITY">SECURITY</string>
+
+    <string name="todo">TODO</string>
+</resources>
