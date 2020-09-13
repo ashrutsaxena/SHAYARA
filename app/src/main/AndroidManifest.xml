@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SECURITY"></activity>
+        <activity
+            android:name=".SECURITY"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".SPLASH">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

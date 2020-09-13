@@ -29,4 +29,10 @@
     <string name="SECURITY">SECURITY</string>
 
     <string name="todo">TODO</string>
+    <string name="VERIFY">VERIFICATION</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="next">NEXT</string>
+    <string name="resend">Resend</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="sending_otp">Sending OTP..</string>
 </resources>
