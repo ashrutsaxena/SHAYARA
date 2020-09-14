@@ -9,9 +9,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -28,6 +32,7 @@ public class SECURITY extends AppCompatActivity {
     CountryCodePicker codePicker;
     String verificationid;
     PhoneAuthProvider.ForceResendingToken token;
+    Boolean verificationinprogress = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,16 +49,45 @@ public class SECURITY extends AppCompatActivity {
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!phonenumber.getText().toString().isEmpty() && phonenumber.getText().toString().length() == 10) {
-                    String phonenum = "+" + codePicker.getSelectedCountryCode() + phonenumber.getText().toString();
-                    Log.d("TAG", "onclick: phone no ->" + phonenum);
-                    progressBar.setVisibility(View.VISIBLE);
-                    state.setText("Sending OTP..");
-                    state.setVisibility(View.VISIBLE);
-                    requestOtp(phonenum);
+                if (!verificationinprogress) {
+                    if (!phonenumber.getText().toString().isEmpty() && phonenumber.getText().toString().length() == 10) {
 
+                        String phonenum = "+" + codePicker.getSelectedCountryCode() + phonenumber.getText().toString();
+                        Log.d("TAG", "ON CLICK:PHONE NO ->" + phonenum);
+                        progressBar.setVisibility(View.VISIBLE);
+                        state.setText("Sending OTP..");
+                        state.setVisibility(View.VISIBLE);
+                        requestOtp(phonenum);
+
+                    } else {
+                        phonenumber.setError("Phone Number is not Valid..");
+                    }
                 } else {
-                    phonenumber.setError("Phone Number is not Valid");
+                    String userotp = codeenter.getText().toString();
+                    if (!userotp.isEmpty() && userotp.length() == 6) {
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationid, userotp);
+                        verifyAuth(credential);
+
+
+                    } else {
+                        codeenter.setError("Valid OTP is Required..");
+                    }
+
+                }
+
+            }
+        });
+    }
+
+    private void verifyAuth(PhoneAuthCredential credential) {
+        fAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(SECURITY.this, "Authentication is Successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SECURITY.this, "Authentication is Failed", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -69,6 +103,9 @@ public class SECURITY extends AppCompatActivity {
                 codeenter.setVisibility(View.VISIBLE);
                 verificationid = s;
                 token = forceResendingToken;
+                nextbtn.setText("Verify");
+                nextbtn.setEnabled(false);
+                verificationinprogress = true;
             }
 
             @Override

@@ -35,4 +35,9 @@
     <string name="resend">Resend</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="sending_otp">Sending OTP..</string>
+    <string name="verify2">VERIFY</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="save2">Save</string>
 </resources>
