@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         security.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SECURITY.class));
+                startActivity(new Intent(MainActivity.this, security.class));
             }
         });
 
