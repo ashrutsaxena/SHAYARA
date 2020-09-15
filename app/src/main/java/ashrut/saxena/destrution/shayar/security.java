@@ -1,5 +1,6 @@
 package ashrut.saxena.destrution.shayar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 
@@ -27,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class security extends AppCompatActivity {
 
     FirebaseAuth fAuth;
+    FirebaseFirestore FSTORE;
     EditText phonenumber, codeenter;
     Button nextbtn;
     ProgressBar progressBar;
@@ -50,6 +55,7 @@ public class security extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         state = findViewById(R.id.state);
         codePicker = findViewById(R.id.ccp);
+        FSTORE = FirebaseFirestore.getInstance();
 
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,19 +85,50 @@ public class security extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (fAuth.getCurrentUser() != null) {
+            progressBar.setVisibility(View.VISIBLE);
+            state.setText("Checking..");
+            state.setVisibility(View.VISIBLE);
+            checkuserprofile();
+        }
+    }
+
+
+
     private void verifyauth(PhoneAuthCredential credential) {
         fAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(security.this, "Authentication is Successful.", Toast.LENGTH_SHORT).show();
-
+                    checkuserprofile();
                 } else {
                     Toast.makeText(security.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+    private void checkuserprofile() {
+        DocumentReference docref = FSTORE.collection("users").document(fAuth.getCurrentUser().getUid());
+        docref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    startActivity(new Intent(getApplicationContext(), mainactivity2.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), auth.class));
+                    finish();
+                }
+
+            }
+        });
+    }
+
 
 
     private void requestOTP(String phonenum) {
@@ -115,10 +152,12 @@ public class security extends AppCompatActivity {
             @Override
             public void onCodeAutoRetrievalTimeOut(String s) {
                 super.onCodeAutoRetrievalTimeOut(s);
+                Toast.makeText(security.this, "OTP expired,Re - Request the OTP", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+                verifyauth(phoneAuthCredential);
 
             }
 
