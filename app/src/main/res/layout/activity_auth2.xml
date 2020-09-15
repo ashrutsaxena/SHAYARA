@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"
-        android:text="@string/verify2"
+        android:text="@string/verify"
         android:textColor="@color/cart_ar"
         android:textSize="30sp"
         android:textStyle="bold|italic"
