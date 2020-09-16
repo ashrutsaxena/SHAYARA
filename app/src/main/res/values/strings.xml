@@ -30,8 +30,6 @@
 
     <string name="todo">TODO</string>
     <string name="VERIFY">VERIFICATION</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="next">NEXT</string>
     <string name="resend">Resend</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="sending_otp">Sending OTP..</string>
@@ -45,5 +43,13 @@
     <string name="ashrut_saxena">ASHRUT SAXENA</string>
     <string name="rockingsaxena01_gmail_com">rockingsaxena01@gmail.com</string>
     <string name="_91_9876543210">+91 9876543210</string>
+
+
+    <string name="quotes">QUOTES</string>
+    <string name="Q">QUOTES</string>
+    <string name="otp_auth">OTP AUTH</string>
+    <string name="V">VERIFICATION</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="next">NEXT</string>
 
 </resources>
