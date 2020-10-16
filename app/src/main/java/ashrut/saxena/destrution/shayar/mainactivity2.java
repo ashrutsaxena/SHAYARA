@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ public class mainactivity2 extends AppCompatActivity {
     FirebaseFirestore fstore;
     TextView pName, pEmail, pPhone;
     Toolbar toolbar;
+    Button quote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,18 @@ public class mainactivity2 extends AppCompatActivity {
         pEmail = findViewById(R.id.profileEmail);
         pPhone = findViewById(R.id.profilePhone);
         toolbar = findViewById(R.id.toolbar);
+        quote = findViewById(R.id.button);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Profile");
 
         fauth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
+        quote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mainactivity2.this, quotes.class));
+            }
+        });
 
         DocumentReference DOCREF = fstore.collection("users").document(fauth.getCurrentUser().getUid());
         DOCREF.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
